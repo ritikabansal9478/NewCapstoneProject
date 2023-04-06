@@ -1,0 +1,22 @@
+description: "Say Hello Example"
+schema:
+  properties:                                                                                                       
+    queryUserSurvey:
+      type: map
+      required: false
+    questionTwo:
+      type: string
+      required: false
+    questionThree:
+      type: string
+      required: false
+    questionFour:
+      type: string
+      required: false
+    questionFive:
+      type: string
+      required: false
+    questionSix:
+      type: string
+      required: false
+components:

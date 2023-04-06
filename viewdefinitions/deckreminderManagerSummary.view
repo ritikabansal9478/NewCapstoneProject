@@ -1,0 +1,42 @@
+description: "Send Record Summary to Managers"
+schema:
+    properties:
+        startDate:
+            type: string
+            required: true
+        endDate:
+            type: string
+            required: true
+        surveys:
+            type: list
+            required: true
+components:
+  - definition: message
+    properties:
+        text: "Summary from {!view.properties.startDate} - {!view.properties.endDate}:"
+    components:
+      - definition: header
+        properties:
+            text: "On-Deck Survey Results For {!view.properties.startDate} - {!view.properties.endDate}"
+      - definition: iteration
+        properties:
+            foreach: "{!view.properties.surveys}"
+            foritem: "survey"
+        components:
+          - definition: divider
+          - definition: section
+            properties:
+                text:
+                    text: "*Name*: {!survey.User__r.FirstName} {!survey.User__r.LastName}"
+                    type: "mrkdwn"
+                fields:
+                  - text: "*Focus This Week*: {!survey.Focus_this_week__c}"
+                    type: "mrkdwn"
+                  - text: "*Focus Next Week*: {!survey.Focus_Next_Week__c}"
+                    type: "mrkdwn"
+                  - text: "*Blockers*: {!survey.Blockers__c}"
+                    type: "mrkdwn"
+                  - text: "*Planned Cert Date*: {!survey.Planned_Cert_Date__c}"
+                    type: "mrkdwn"
+                  - text: "*% Supporting Prior Project*: {!survey.Supporting_prior_project__c}"
+                    type: "mrkdwn"

@@ -1,0 +1,14 @@
+description: "Display a message in a modal"
+schema:
+  properties:
+    title:
+      type: string
+      required: true
+components:
+  - definition: modal
+    properties:
+      title: "{!view.properties.title}"
+   
+
+
+           

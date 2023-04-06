@@ -1,0 +1,79 @@
+description: "Say Hello Example"
+schema:
+  properties:
+    titleName: 
+      type: string
+      required: false
+    queryUserSurvey:
+      type: map
+      required: false
+    questionTwo:
+      type: string
+      required: false
+    questionThree:
+      type: string
+      required: false
+    questionFour:
+      type: string
+      required: false
+    questionFive:
+      type: string
+      required: false
+    questionSix:
+      type: string
+      required: false
+components:
+  - definition: modal
+    properties:
+      title: '{!view.properties.titleName}'
+      submitLabel: Save
+      closeLabel: Cancel
+    events:
+      onsubmit:
+          definition: 'apex__action__submitForm'
+    components:
+      - definition: input
+        name: question_two
+        properties:
+          label: 'What percentage of your time are you spending supporting your previous project?'
+        components:
+          - definition: textInput
+            properties:
+              name: question_two
+              value: '{!view.properties.queryUserSurvey.Supporting_prior_project__c}'
+      - definition: input
+        name: question_three
+        properties:
+          label: 'What did you do this week?'
+        components:
+          - definition: textInput
+            properties:
+              name: question_three
+              value: '{!view.properties.queryUserSurvey.Focus_this_week__c}'
+      - definition: input
+        name: question_four
+        properties:
+          label: 'If you are studying for a certification, when do you plan to take it?'
+        components:
+          - definition: textInput
+            properties:
+              name: question_four
+              value: '{!view.properties.queryUserSurvey.Planned_Cert_Date__c}'
+      - definition: input
+        name: question_five
+        properties:
+          label: 'What are you going to focus on next week?'
+        components:
+          - definition: textInput
+            properties:
+              name: question_five
+              value: '{!view.properties.queryUserSurvey.Focus_Next_Week__c}'
+      - definition: input
+        name: question_six
+        properties:
+          label: 'Do you have any blockers?'
+        components:
+          - definition: textInput
+            properties:
+              name: question_six
+              value: '{!view.properties.queryUserSurvey.Blockers__c}'
